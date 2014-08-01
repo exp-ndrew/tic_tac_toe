@@ -6,7 +6,7 @@ class Space
   def initialize (attributes)
     @number_coord = attributes[:number_coord]
     @letter_coord = attributes[:letter_coord]
-    @marked_by = " " #bandaid
+    @marked_by = " "
   end
 
 end

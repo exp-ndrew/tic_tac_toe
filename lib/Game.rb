@@ -32,33 +32,25 @@ class Game
     @marked_spaces["x"].sort!
     @marked_spaces["o"].sort!
 
-    if      @marked_spaces["x"].include?(0) && @marked_spaces["x"].include?(3) && @marked_spaces["x"].include?(6) ||
-            @marked_spaces["x"].include?(1) && @marked_spaces["x"].include?(4) && @marked_spaces["x"].include?(7) ||
-            @marked_spaces["x"].include?(2) && @marked_spaces["x"].include?(5) && @marked_spaces["x"].include?(8) ||
-            @marked_spaces["x"].include?(0) && @marked_spaces["x"].include?(1) && @marked_spaces["x"].include?(2) ||
-            @marked_spaces["x"].include?(3) && @marked_spaces["x"].include?(4) && @marked_spaces["x"].include?(5) ||
-            @marked_spaces["x"].include?(6) && @marked_spaces["x"].include?(7) && @marked_spaces["x"].include?(8) ||
-            @marked_spaces["x"].include?(0) && @marked_spaces["x"].include?(4) && @marked_spaces["x"].include?(8) ||
-            @marked_spaces["x"].include?(2) && @marked_spaces["x"].include?(4) && @marked_spaces["x"].include?(6)
 
-        result = "x"
+    winning_combos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 
-    elsif   @marked_spaces["o"].include?(0) && @marked_spaces["o"].include?(3) && @marked_spaces["o"].include?(6) ||
-            @marked_spaces["o"].include?(1) && @marked_spaces["o"].include?(4) && @marked_spaces["o"].include?(7) ||
-            @marked_spaces["o"].include?(2) && @marked_spaces["o"].include?(5) && @marked_spaces["o"].include?(8) ||
-            @marked_spaces["o"].include?(0) && @marked_spaces["o"].include?(1) && @marked_spaces["o"].include?(2) ||
-            @marked_spaces["o"].include?(3) && @marked_spaces["o"].include?(4) && @marked_spaces["o"].include?(5) ||
-            @marked_spaces["o"].include?(6) && @marked_spaces["o"].include?(7) && @marked_spaces["o"].include?(8) ||
-            @marked_spaces["o"].include?(0) && @marked_spaces["o"].include?(4) && @marked_spaces["o"].include?(8) ||
-            @marked_spaces["o"].include?(2) && @marked_spaces["o"].include?(4) && @marked_spaces["o"].include?(6)
+    ["x","o"].each do |symbol|
+      winning_combos.each_with_index do |combo, index|
+        if  @marked_spaces[symbol].include?(combo[0]) &&
+            @marked_spaces[symbol].include?(combo[1]) &&
+            @marked_spaces[symbol].include?(combo[2])
 
-        result = "o"
+          @result = symbol
 
+        end
+      end
     end
-      result
+    @result
   end
 
 end
+
 
 
 # 012, 345, 678 (vertical wins)
