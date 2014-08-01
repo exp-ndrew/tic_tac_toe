@@ -21,6 +21,17 @@ describe "Game" do
       expect(new_game.game_board.spaces[0].marked_by).to eq "x"
     end
   end
+
+  describe "game_over" do
+    it "checks to see if a player has won the game" do
+      new_game = Game.new
+      new_game.game_board.spaces[0].marked_by = "x"
+      new_game.game_board.spaces[3].marked_by = "x"
+      new_game.game_board.spaces[6].marked_by = "x"
+      new_game.game_over
+      expect(new_game.game_over).to eq "x"
+    end
+  end
 end
 
 describe "Player" do
