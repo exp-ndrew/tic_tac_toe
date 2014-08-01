@@ -25,7 +25,7 @@ def tic_tac_toe
 end
 
 def start_game
-  @new_game = Game.new #we need to expose new_game outside of the start_game method
+  @new_game = Game.new
   @current_turn = "x"
   turn
 end
@@ -56,7 +56,7 @@ def turn
 
     puts "Enter the coordinates of the space you want to mark:"
     input = gets.chomp
-    if input[1].to_i > 3 || ["a","b","c"].include?(input[0]) == false
+    if input.match(/([abc])([123])/) == nil
       puts "That's not a valid input!"
       sleep 1
       turn
