@@ -1,7 +1,12 @@
 class Game
+
+  attr_reader(:x_player, :o_player)
+  attr_accessor(:game_board)
+
   def initialize
-    Board.new
-    Player.new("x")
-    Player.new("o")
+    @game_board = Board.new
+    @x_player = Player.new("x")
+    @o_player = Player.new("o")
   end
+
 end

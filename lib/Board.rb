@@ -11,4 +11,11 @@ class Board
     end
   end
 
+  def mark_space (x_coord, y_coord, symbol)
+    @spaces.each do |space|
+      if space.x_coord == x_coord && space.y_coord == y_coord
+        space.marked_by = symbol
+      end
+    end
+  end
 end
