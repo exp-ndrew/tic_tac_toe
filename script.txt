@@ -1,0 +1,47 @@
+Tic Tac Toe
+
+Press 't' to start a new game
+
+> t
+
+Player 1: X
+
+    1   2   3
+ a ___|___|___
+ b ___|___|___
+ c    |   |
+
+
+# i'm thinking we might want to rename the x,y to a,1
+
+
+Type your move:
+
+> b2
+
+   1   2   3
+a ___|___|___
+b ___|_X_|___
+c    |   |
+
+--- (clear screen)---
+
+Player 2: O
+
+    1   2   3
+ a ___|___|___
+ b ___|_X_|___
+ c    |   |
+
+
+Type your move:
+
+> c2
+
+   1   2   3
+a ___|___|___
+b ___|_X_|___    <--- this can be an object that we call each "turn"
+c    | O |
+
+
+--- (clear screen) ---
