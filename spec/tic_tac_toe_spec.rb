@@ -29,7 +29,37 @@ describe "Game" do
       new_game.game_board.spaces[3].marked_by = "x"
       new_game.game_board.spaces[6].marked_by = "x"
       new_game.game_over
-      expect(new_game.game_over).to eq "x"
+      expect(new_game.game_over).to eq "x player wins!"
+    end
+
+    it "checks to see if no one wins" do
+      new_game = Game.new
+      new_game.game_board.spaces[0].marked_by = "x"
+      new_game.game_board.spaces[1].marked_by = "x"
+      new_game.game_board.spaces[2].marked_by = "o"
+      new_game.game_board.spaces[3].marked_by = "o"
+      new_game.game_board.spaces[4].marked_by = "o"
+      new_game.game_board.spaces[5].marked_by = "x"
+      new_game.game_board.spaces[6].marked_by = "x"
+      new_game.game_board.spaces[7].marked_by = "x"
+      new_game.game_board.spaces[8].marked_by = "o"
+      new_game.game_over
+      expect(new_game.game_over).to eq "Cat's Game"
+    end
+
+    it "returns a winner even if the grid is full" do
+      new_game = Game.new
+      new_game.game_board.spaces[0].marked_by = "x"
+      new_game.game_board.spaces[1].marked_by = "x"
+      new_game.game_board.spaces[2].marked_by = "o"
+      new_game.game_board.spaces[3].marked_by = "o"
+      new_game.game_board.spaces[4].marked_by = "o"
+      new_game.game_board.spaces[5].marked_by = "x"
+      new_game.game_board.spaces[6].marked_by = "o"
+      new_game.game_board.spaces[7].marked_by = "x"
+      new_game.game_board.spaces[8].marked_by = "o"
+      new_game.game_over
+      expect(new_game.game_over).to eq "o player wins!"
     end
   end
 end

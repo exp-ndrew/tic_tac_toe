@@ -4,7 +4,7 @@ Press 't' to start a new game
 
 > t
 
-Player 1: X
+X Player, your turn!
 
     1   2   3
  a ___|___|___
@@ -12,21 +12,33 @@ Player 1: X
  c    |   |
 
 
-# i'm thinking we might want to rename the x,y to a,1
+###############
+i'm thinking we might want to rename the x,y to 1,a
+my thought right now is that it's nicer to type A1 than 1A
 
+so if we're having them type the "x" coordinate before the "y"
+
+it would be letter = (old x) and number = (old y)
+
+in the UI a player can type A1, but then we could just translate that to x,y in the code
+
+^^^ that
+
+##############
 
 Type your move:
 
 > b2
 
-   1   2   3
+   1   2   3 <(old x)
 a ___|___|___
 b ___|_X_|___
 c    |   |
+^(old y)
 
 --- (clear screen)---
 
-Player 2: O
+O Player, your turn!
 
     1   2   3
  a ___|___|___

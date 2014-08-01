@@ -7,6 +7,7 @@ require './lib/player'
 
 
 def tic_tac_toe
+  system("clear")
   puts "Tic Tac Toe\n\n\n"
   puts "Press 's' to start a new game."
   puts "Press 'x' to exit."
@@ -33,44 +34,44 @@ def turn
 
   loop do
     system("clear")
+    puts "\n\n"
+    show_board
 
-    case @current_turn
-      when 'x'
-        puts "X Player, your turn!"
-      when 'o'
-        puts "O Player, your turn!"
-      else
-        puts "something's wrong..."
+    if @new_game.game_over != nil
+      puts "Game over! #{@new_game.game_over}"
+      sleep 3
+      system('clear')
+      tic_tac_toe
     end
 
-    show_board
+    puts "\n\n"
+    case @current_turn
+      when 'x'
+        puts "X Player, your turn!\n"
+      when 'o'
+        puts "O Player, your turn!\n"
+      else
+        puts "something's wrong...\n"
+    end
 
     puts "Enter the coordinates of the space you want to mark:"
     input = gets.chomp
+    if input[1].to_i > 3 || ["a","b","c"].include?(input[0]) == false
+      puts "That's not a valid input!"
+      sleep 1
+      turn
+    else
+      number = input[1].to_i
+      letter = input[0]
+      @new_game.make_move(@current_turn, number, letter)
 
-    number = input[1].to_i
-    letter = input[0]
-
-    @new_game.make_move(@current_turn, number, letter)
-
-    #check if the game is won
-
-    #game_over?
-
-    #switch the current turn to the next user
-    case @current_turn
-    when 'x'
-      @current_turn = 'o'
-    when 'o'
-      @current_turn = 'x'
+      case @current_turn
+      when 'x'
+        @current_turn = 'o'
+      when 'o'
+        @current_turn = 'x'
+      end
     end
-    #do it all again
-
-    # at this point we could run it and see if we can assign the @markeD_by
-
-    # we need to put something in that checks if the game is won
-
-
   end
 end
 

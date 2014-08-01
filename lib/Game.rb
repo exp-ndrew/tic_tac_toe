@@ -20,6 +20,8 @@ class Game
   def game_over
 
     @marked_spaces = {"x" => [],"o" => []}
+    @marked_spaces["x"].sort!
+    @marked_spaces["o"].sort!
 
     self.game_board.spaces.each_with_index do |space, index|
       ["x","o"].each do |symbol|
@@ -29,10 +31,6 @@ class Game
       end
     end
 
-    @marked_spaces["x"].sort!
-    @marked_spaces["o"].sort!
-
-
     winning_combos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 
     ["x","o"].each do |symbol|
@@ -41,18 +39,17 @@ class Game
             @marked_spaces[symbol].include?(combo[1]) &&
             @marked_spaces[symbol].include?(combo[2])
 
-          @result = symbol
-
+          @result = "#{symbol} player wins!"
         end
+      end
+    end
+
+    if @marked_spaces["x"].length + @marked_spaces["o"].length > 8
+      unless @result != nil
+        @result = "Cat's Game"
       end
     end
     @result
   end
 
 end
-
-
-
-# 012, 345, 678 (vertical wins)
-# 036, 147, 258 (horizontal wins)
-# 048, 246 (diagonal wins)
